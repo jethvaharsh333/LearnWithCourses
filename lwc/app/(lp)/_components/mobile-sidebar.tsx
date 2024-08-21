@@ -1,0 +1,43 @@
+"use client"
+
+import { Menu } from "lucide-react";
+
+import {
+    Sheet,
+    SheetContent, 
+    SheetTrigger
+} from "@/components/ui/sheet";
+
+import Navbar from "./navbar"
+import NavLink from "./nav-link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const MobileSidebar = () => {
+    const pathname = usePathname();
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        // Close the sheet when the pathname changes
+        setIsOpen(false);
+    }, [pathname]);
+
+    const handleSheetOpen = () => {
+        setIsOpen(true);
+    };
+
+    return(
+        <div className="w-full md:hidden">
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger className="md:hidden w-full flex justify-end  pe-10 hover:opacity-75 transition" onClick={handleSheetOpen}>
+                    <Menu/>
+                </SheetTrigger>
+                <SheetContent side="right" className="p-0 bg-white">
+                    <NavLink/>
+                </SheetContent>
+            </Sheet>
+        </div>
+    )
+}
+
+export default MobileSidebar;
