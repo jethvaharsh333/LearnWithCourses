@@ -59,24 +59,26 @@ const CreatePage = () => {
                 </p>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-8">
-                        <FormField control={form.control} name="title" render={({field}) => (
-                            <FormItem>
-                                <FormLabel>
-                                    Course Title
-                                </FormLabel>
-                                <FormControl>
-                                    <Input
-                                        disabled={isSubmitting}
-                                        placeholder="e.g.'Advanced web deelopment'"
-                                        {...field}
-                                    />
-                                </FormControl>
-                                <FormDescription>
-                                    What will you teach in this course?
-                                </FormDescription>
-                                <FormMessage/>
-                            </FormItem>
-                        )} />
+                        <FormField control={form.control} name="title" 
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>
+                                        Course Title
+                                    </FormLabel>
+                                    <FormControl>
+                                        <Input
+                                            disabled={isSubmitting}
+                                            placeholder="e.g.'Advanced web development'"
+                                            {...field}
+                                        />
+                                    </FormControl>
+                                    <FormDescription>
+                                        What will you teach in this course?
+                                    </FormDescription>
+                                    <FormMessage/>
+                                </FormItem>
+                            )} 
+                        />
                         <div className="flex items-center gap-x-2">
                             <Link href="/dashboard">
                                 <Button type="button" variant="ghost">

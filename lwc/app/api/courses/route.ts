@@ -5,11 +5,11 @@ import { db } from "@/lib/db";
 export async function POST(req: Request,){
     try{
         // const { userId } = auth();
-        console.log("not good");
+        // console.log("not good");
         const userId = await currentUserId();
-        console.log("\n\n\n\n\n\n\n\nuserId",userId);
+        // console.log("\n\n\n\n\n\n\n\nuserId",userId);
         const { title } = await req.json();
-        console.log(userId);
+        // console.log(userId);
 
         if(!userId) {
             return new NextResponse("Unauthorized", { status: 401 });

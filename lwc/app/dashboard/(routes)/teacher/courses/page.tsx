@@ -6,12 +6,7 @@ import { db } from "@/lib/db";
 
 import { DataTable } from "./_components/data-table";
 import { columns } from "./_components/columns";
-import { currentUser, currentUserId } from "@/lib/auth";
-import { useCurrentUser } from "@/hooks/use-current-user";
-// import { currentUserIdId } from "@/hooks/use-current-user-id";
-
-
-
+import { currentUserId } from "@/lib/auth";
 
 const CoursesPage = async () => {
     const userId  = await currentUserId();

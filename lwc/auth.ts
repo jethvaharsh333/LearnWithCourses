@@ -68,7 +68,7 @@ export const { auth, handlers, signIn, signOut, } = NextAuth({
                 session.user.name = token.name;
                 session.user.email = token.email ?? "";
                 session.user.isOAuth = token.isOAuth as boolean;
-                console.log("SESSION\n",session.user,"\n\n");
+                // console.log("SESSION\n",session.user,"\n\n");
             }
 
             return session;
@@ -87,7 +87,7 @@ export const { auth, handlers, signIn, signOut, } = NextAuth({
             token.email = existingUser.email;
             token.role = existingUser.role;
             token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
-            console.log("TOKEN\n",token,"\n\n");
+            // console.log("TOKEN\n",token,"\n\n");
 
             return token;
         }
