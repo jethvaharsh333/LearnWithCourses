@@ -7,9 +7,9 @@ console.log(USER, PASS);
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    service: "Gmail",
-    secure : true,
-    port : 465,
+    // service: "Gmail",
+    secure : false,
+    port : 587,
     auth: {
         user: USER,
         pass: PASS,
@@ -18,15 +18,13 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
-    
     const ans = await transporter.sendMail({
         from: '"lwc" <harshcse98@gmail.com>',
         to: email,
         subject: "2FA Code",
         text: "Hello world?",
         html: `<p>Your 2FA Code: ${token}</p>`,
-    });
-    
+    });  
 };
   
 export const sendPasswordResetEmail = async (email: string, token: string) => {
