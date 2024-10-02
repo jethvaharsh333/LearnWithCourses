@@ -14,8 +14,10 @@ const transporter = nodemailer.createTransport({
         user: USER,
         pass: PASS,
     },
-    logger: true,
+    // logger: true,
 });
+
+console.log(transporter);
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
     const ans = await transporter.sendMail({
