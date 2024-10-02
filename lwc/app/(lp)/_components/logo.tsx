@@ -35,7 +35,7 @@ const Logo = () => {
                 className={cn("w-32 md:w-7/12 md:h-1/4 lg:h-1/2 xl:h-full md:scale-y-75 lg:scale-y-100  xl:scale-y-150 scale-x-150 md:scale-x-125 ", isImageVisible ? "visible" : "hidden")}
             />
         </div>
-
+        
     )
 }
 

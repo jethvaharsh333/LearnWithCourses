@@ -14,6 +14,7 @@ import { Course } from "@prisma/client";
 import Image from "next/image";
 import { FileUpload } from "@/components/file-upload";
 import { CldImage } from "next-cloudinary";
+import Script from "next/script";
 
 const formSchema = z.object({
     imageUrl: z.string().min(1, {
@@ -346,7 +347,11 @@ const ImageForm = ({ initialData, courseId }: ImageFormProps) => {
                     </div>
                 )}
             </div>
-            <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script>
+            <Script
+                src="https://upload-widget.cloudinary.com/latest/global/all.js" 
+                strategy="lazyOnload"
+            />
+            {/* <script src="https://upload-widget.cloudinary.com/latest/global/all.js" type="text/javascript"></script> */}
         </>
     );
 };
