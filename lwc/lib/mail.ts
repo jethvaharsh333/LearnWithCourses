@@ -46,7 +46,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
     const ans = await transporter.sendMail({
-        from: '"lwc" <harshcse98@gmail.com>',
+        from: '22010101072@darshan.ac.in',
         to: email, // list of receivers
         subject: "Confirm your email", // Subject line
         text: "Hello world?", // plain text body
