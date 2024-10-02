@@ -18,10 +18,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
-    console.log("Email: ");
-    console.log(transporter);
-    console.log("EMAIL_USER:", process.env.EMAIL_USER);
-    console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
+    
     const ans = await transporter.sendMail({
         from: '"lwc" <harshcse98@gmail.com>',
         to: email,
@@ -29,7 +26,7 @@ export const sendTwoFactorEmail = async (email: string, token: string) => {
         text: "Hello world?",
         html: `<p>Your 2FA Code: ${token}</p>`,
     });
-    console.log("ans:", ans);
+    
 };
   
 export const sendPasswordResetEmail = async (email: string, token: string) => {
@@ -46,14 +43,18 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
   
 export const sendVerificationEmail = async (email: string, token: string) => {
     const confirmLink = `${domain}/auth/new-verification?token=${token}`;
-
-    await transporter.sendMail({
+    console.log("Email: ");
+    console.log(transporter);
+    console.log("EMAIL_USER:", process.env.EMAIL_USER);
+    console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
+    const ans = await transporter.sendMail({
         from: '"lwc" <harshcse98@gmail.com>',
         to: email, // list of receivers
         subject: "Confirm your email", // Subject line
-        text: "Hello world?", // plain text body
+        // text: "Hello world?", // plain text body
         html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`, // html body
     });
+    console.log("ans:", ans);
 };
 
 // import { Resend } from "resend";
