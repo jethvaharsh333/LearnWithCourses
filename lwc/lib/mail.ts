@@ -9,8 +9,8 @@ const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     service: "gmail",
     auth: {
-        user: "22010101072@darshan.ac.in",
-        pass: "#@rs#.j99",
+        user: USER,
+        pass: PASS,
     },
     // logger: true,
 });
@@ -62,7 +62,6 @@ export const sendVerificationEmail = async (email: string, token: string) => {
                     Please verify your email address to get started.
                 </p>
                 <a href="${confirmLink}">Click here</a>
-                <p>${confirmLink}</p>
             </div>
         `,
     });
