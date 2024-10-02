@@ -25,7 +25,7 @@ const Logo = () => {
                     text="NEXEO"
                 />
             </div>
-            <img
+            <Image
                 src="/assets/logonexeo.png"
                 // quality={100}
                 alt="NEXEO"
