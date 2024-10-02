@@ -1,18 +1,17 @@
 import nodemailer from "nodemailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 const USER = process.env.EMAIL_USER;
 const PASS = process.env.EMAIL_PASS;
 console.log(USER, PASS);
 
-const transporter = nodemailer.createTransport({
-    host: "harshcse98@gmail.com",
+const transporter = nodemailer.createTransport('SMTP',{
+    host: "smtp.gmail.com",
     service: "gmail",
-    secure : false,
-    port : 587,
     auth: {
-        user: USER,
-        pass: PASS,
+        user: "22010101072@darshan.ac.in",
+        pass: "#@rs#.j99",
     },
     // logger: true,
 });
@@ -51,7 +50,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
         from: '"lwc" <harshcse98@gmail.com>',
         to: email, // list of receivers
         subject: "Confirm your email", // Subject line
-        // text: "Hello world?", // plain text body
+        text: "Hello world?", // plain text body
         html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`, // html body
     });
     console.log("ans:", ans);
