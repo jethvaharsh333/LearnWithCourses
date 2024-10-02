@@ -1,12 +1,11 @@
 import nodemailer from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 const USER = process.env.EMAIL_USER;
 const PASS = process.env.EMAIL_PASS;
 console.log(USER, PASS);
 
-const transporter = nodemailer.createTransport('SMTP',{
+const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     service: "gmail",
     auth: {
@@ -32,7 +31,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     const resetLink = `${process.env.DOMAIN}/auth/new-password?token=${token}`;
 
     await transporter.sendMail({
-        from: '"lwc" <harshcse98@gmail.com>',
+        from: '22010101072@darshan.ac.in',
         to: email, // list of receivers
         subject: "Reset your password", // Subject line
         // text: "Hello world?", // plain text body
