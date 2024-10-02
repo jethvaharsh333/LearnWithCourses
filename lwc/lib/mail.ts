@@ -2,13 +2,15 @@ import nodemailer from "nodemailer";
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
     service: "gmail",
     secure : true,
     port : 465,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    }
+    },
+    logger: true,
 });
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
