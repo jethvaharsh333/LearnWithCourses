@@ -3,7 +3,7 @@ const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    service: "gmail",
+    service: "Gmail",
     secure : true,
     port : 465,
     auth: {
@@ -14,14 +14,16 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
+    console.log("Email: ");
+    console.log(transporter);
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
     const ans = await transporter.sendMail({
         from: '"lwc" <harshcse98@gmail.com>',
-        to: email, // list of receivers
-        subject: "2FA Code", // Subject line
-        text: "Hello world?", // plain text body
-        html: `<p>Your 2FA Code: ${token}</p>`, // html body
+        to: email,
+        subject: "2FA Code",
+        text: "Hello world?",
+        html: `<p>Your 2FA Code: ${token}</p>`,
     });
     console.log("ans:", ans);
 };
