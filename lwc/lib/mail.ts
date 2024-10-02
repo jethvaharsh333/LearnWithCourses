@@ -12,13 +12,16 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
-    await transporter.sendMail({
+    console.log("EMAIL_USER:", process.env.EMAIL_USER);
+    console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
+    const ans = await transporter.sendMail({
         from: '"lwc" <harshcse98@gmail.com>',
         to: email, // list of receivers
         subject: "2FA Code", // Subject line
         text: "Hello world?", // plain text body
         html: `<p>Your 2FA Code: ${token}</p>`, // html body
     });
+    console.log("ans:", ans);
 };
   
 export const sendPasswordResetEmail = async (email: string, token: string) => {
