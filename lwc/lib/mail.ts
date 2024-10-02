@@ -19,7 +19,7 @@ console.log(transporter);
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
     const ans = await transporter.sendMail({
-        from: '"lwc" <harshcse98@gmail.com>',
+        from: USER,
         to: email,
         subject: "2FA Code",
         text: "Hello world?",
@@ -31,7 +31,7 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     const resetLink = `${process.env.DOMAIN}/auth/new-password?token=${token}`;
 
     await transporter.sendMail({
-        from: '22010101072@darshan.ac.in',
+        from: USER,
         to: email, // list of receivers
         subject: "Reset your password", // Subject line
         // text: "Hello world?", // plain text body
@@ -46,11 +46,23 @@ export const sendVerificationEmail = async (email: string, token: string) => {
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
     console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
     const ans = await transporter.sendMail({
-        from: '22010101072@darshan.ac.in',
+        from: USER,
         to: email, // list of receivers
         subject: "Confirm your email", // Subject line
-        text: "Hello world?", // plain text body
-        html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`, // html body
+        // text: "Hello world?", // plain text body
+        // attachDataUrls: `${confirmLink}`,
+        // html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p> <p>${confirmLink}</p>`, // html body
+        html: `
+            <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+                <h2 style="color: #4CAF50;">Welcome!</h2>
+                <p style="font-size: 16px;">Thank you for joining our service.</p>
+                <p style="background-color: #f9f9f9; padding: 10px; border-radius: 5px;">
+                    Please verify your email address to get started.
+                </p>
+                <a href="${confirmLink}">Click here</a>
+                <p>${confirmLink}</p>
+            </div>
+        `,
     });
     console.log("ans:", ans);
 };
