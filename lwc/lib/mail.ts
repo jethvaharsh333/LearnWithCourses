@@ -28,7 +28,7 @@ export const sendTwoFactorEmail = async (email: string, token: string) => {
 };
   
 export const sendPasswordResetEmail = async (email: string, token: string) => {
-    const resetLink = `${process.env.DOMAIN}/auth/new-password?token=${token}`;
+    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/auth/new-password?token=${token}`;
 
     await transporter.sendMail({
         from: USER,
@@ -40,7 +40,9 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
 };
   
 export const sendVerificationEmail = async (email: string, token: string) => {
-    const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+    console.log(domain);
+    const confirmLink = `${process.env.NEXT_PUBLIC_APP_URL}/auth/new-verification?token=${token}`;
+    console.log(confirmLink);
     console.log("Email: ");
     console.log(transporter);
     console.log("EMAIL_USER:", process.env.EMAIL_USER);
