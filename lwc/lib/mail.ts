@@ -1,14 +1,18 @@
 import nodemailer from "nodemailer";
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
+const USER = process.env.EMAIL_USER;
+const PASS = process.env.EMAIL_PASS;
+console.log(USER, PASS);
+
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     service: "Gmail",
     secure : true,
     port : 465,
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: USER,
+        pass: PASS,
     },
     logger: true,
 });
