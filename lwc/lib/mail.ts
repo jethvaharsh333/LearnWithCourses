@@ -7,8 +7,8 @@ const transporter = nodemailer.createTransport({
     secure : true,
     port : 465,
     auth: {
-        user: "22010101072@darshan.ac.in",
-        pass: "#@rs#.j99"
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     },
     logger: true,
 });
@@ -16,8 +16,8 @@ const transporter = nodemailer.createTransport({
 export const sendTwoFactorEmail = async (email: string, token: string) => {
     console.log("Email: ");
     console.log(transporter);
-    // console.log("EMAIL_USER:", process.env.EMAIL_USER);
-    // console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
+    console.log("EMAIL_USER:", process.env.EMAIL_USER);
+    console.log("EMAIL_PASS:", process.env.EMAIL_PASS);
     const ans = await transporter.sendMail({
         from: '"lwc" <harshcse98@gmail.com>',
         to: email,
