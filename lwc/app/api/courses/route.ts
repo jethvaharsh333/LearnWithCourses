@@ -1,6 +1,7 @@
 import { currentUserId } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
+import { getDashboardCourses } from "@/actions/get-dashboard-courses";
 
 export async function POST(req: Request,){
     try{
@@ -29,3 +30,10 @@ export async function POST(req: Request,){
         return new NextResponse("internal error", { status: 500 });
     }
 }
+
+// export async function GET(req: Request){
+//     try{
+//         const userId = await currentUserId();
+//         const {completedCourses, coursesInProgress} = await getDashboardCourses(userId);
+//     }
+// }  

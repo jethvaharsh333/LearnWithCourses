@@ -15,11 +15,11 @@ const guestRoutes = [
         label: "Browse",
         href: "/dashboard/search",
     },
-    {
-        icon: Workflow,
-        label: "Task",
-        href: "/dashboard/task",
-    }
+    // {
+    //     icon: Workflow,
+    //     label: "Task",
+    //     href: "/dashboard/task",
+    // }
 ];
 
 const teacherRoutes = [

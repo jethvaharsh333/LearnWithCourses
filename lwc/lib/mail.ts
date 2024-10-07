@@ -2,22 +2,20 @@ import nodemailer from "nodemailer";
 const domain = process.env.NEXT_PUBLIC_APP_URL;
 
 const USER = process.env.EMAIL_USER;
-const PASS = process.env.EMAIL_PASS;
-console.log(USER, PASS);
+// const PASS = process.env.EMAIL_PASS;
+// console.log(USER, PASS);
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     service: "gmail",
     auth: {
-        // user: "22010101072@darshan.ac.in",
         user: process.env.EMAIL_USER,
-        // pass: "#@rs#.j99",
         pass: process.env.EMAIL_PASS,
     },
     // logger: true,
 });
 
-console.log(transporter);
+// console.log(transporter);
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
     const ans = await transporter.sendMail({
